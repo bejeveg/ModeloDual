@@ -1,0 +1,127 @@
+
+body {
+    font-family: "Comic Sans MS";
+    font-size: 13pt;
+    background-image: url("../images/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 10px;
+    margin: 0;
+}
+
+h1 {
+    font-size: 15pt;
+    color: #7d20d5;
+    text-align: center;
+    padding: 18px 0 18px 0;
+    margin: 0 0 10px 0;
+}
+h1 span {
+    border: 4px dashed  #7d20d5;
+    padding: 10px;
+}
+.img-circle {
+    border: 3px solid white;
+    border-radius: 50%;
+}
+.section {
+    width: 550px;
+    margin:auto;
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+#header {
+    background-image: url("../images/head.jpg");
+    background-size: cover;
+}
+
+#header p {
+    font-size: 25pt;
+    color: #6c2899;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    padding-top: 5px;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+.quote {
+    font-size: 12pt;
+    text-align: right;
+    margin-top: 10px;
+}
+
+form {
+    text-align: center;
+    margin-top: 0;
+}
+.submit {
+    background-color: #7d20d5;
+    padding: 12px 45px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    margin: 0;
+    font-weight: bold;
+}
+.submit:hover {
+    background-color: #5f19a1;
+}
+textarea {
+    height: 100px;
+}
+input, textarea, select {
+    font-family: "Comic Sans MS";
+    margin-bottom: 10px;
+    font-size: 11pt;
+    padding: 15px 10px 10px;
+    border: 1px solid #cecece;
+    background-color: #efefef;
+    color: #787575;
+    border-radius: 5px;
+    width: 70%;
+    outline: none;
+}
+select{
+  width: 74%;
+}
+.head{
+    margin-bottom: 10px;
+    font-size: 12pt;
+    padding: 12px 8px 8px;
+    background-color: #efefef;
+    width: 70%;
+    border-radius: 2px;
+    outline: none;
+    text-align: left;
+    margin: auto;
+    border: 1px solid #cecece;
+    border-left: 6px solid  #7d20d5;
+    
+}
+
+input[type="radio"]{
+    font-size: 11pt;
+    margin: 10px;
+    text-align:left;
+    width: auto;
+}
+tr, table, td{
+    margin: auto;
+}
+
+#contacts img {
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#contacts a {
+    text-decoration: none;
+}
+#contacts {
+    text-align: center;
+}

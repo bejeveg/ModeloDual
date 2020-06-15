@@ -1,0 +1,67 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+    {% if messages %}
+        <script>
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        </script>
+    {% endif %}
+
+<section id="infoalumnos" class="divider">
+    <div class="container-login100">
+        <div class="wrap-login100 ">
+            <span class="login100-form-title p-b-30">
+                Editar Información: 
+            </span>
+            <form method="post" action="{% url 'editar_alumno' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Domicilio</label>
+                    <input type="text" name="address" class="form-control" value='{{datos.domicilio}}'>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Teléfono</label>
+                    <input type="number" name="phone" class="form-control" value='{{datos.telefono}}'>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Correo</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail" value='{{datos.correo}}'>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Red Social</label>
+                    <input type="text" class="form-control" name="red_social" value='{{datos.red_social}}'>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Red Social URL</label>
+                    <input type="text" class="form-control" name="red_social_url" value='{{datos.red_social_url}}'>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Estado Actual</label>
+                    <input type="text" class="form-control" name="estado_actual" value='{{datos.estado_actual}}'>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">¿Quieres cambiar tu contraseña? Digita primero tu contraseña actual aquí  abajo:</label>
+                    <input type="password" class="form-control" name="old_pass">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Escribe tu nueva contraseña:</label>
+                    <input type="password" class="form-control" name="new_pass">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Vuelve a escribir tu nueva contraseña:</label>
+                    <input type="password" class="form-control" name="re_new_pass">
+                </div> 
+                <div class="p-l-115">
+                    <input type="submit" class="btn btn-dark "></input>
+                </div>
+                <small id="emailHelp" class="form-text text-muted p-t-5">Para realizar cambios adicionales contacta con los administradores</small>
+            </form>
+        </div>
+    </div>
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+
+
+{% endblock %}

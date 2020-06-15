@@ -1,0 +1,115 @@
+{% extends 'registro/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+    <div class="container p-b-15 p-t-15">
+        <div class="content-center ">
+            <h3>Proyectos</h3>
+        </div>
+        {% for dato in datos %}
+            {% cycle True False as row silent %}
+                {% if row and not forloop.last%}
+                 <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="{{ dato.1.url_logo }}" class="card-img p-t-30" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ dato.0.nombre }}</h5>
+                                        <ul class="simple">
+                                            <li><small class="text-muted">
+                                                Alumno: </small><span>{{ dato.0.alumno.nombre }}</span>
+                                            </li>
+                                            <li><small class="text-muted">
+                                                Carrera: </small><span>{{ dato.0.alumno.carrera }}</span>
+                                            </li>
+                                            <li><small class="text-muted">
+                                                Semestre: </small><span>{{ dato.0.alumno.semestre }}</span>
+                                            </li>
+                                            <li><small class="text-muted">
+                                                    Empresa: </small><span>{{ dato.0.empresa_rfc }}</span>
+                                            </li>
+                                            <li><small class="text-muted">Asesor: </small> <span>{{ dato.0.asesor_interno }}</span>
+                                            </li>
+                                            <li><small class="text-muted">Asesor Externo: </small>
+                                                <span>{{ dato.0.asesor_externo }}</span>
+                                            </li>
+                                            <li><small class="text-muted">Area: </small> <span>{{ dato.0.area }}</span></li>
+                                            <li><small class="text-muted">Trabajo Posterior: </small> <span>
+                                                    {{ dato.0.trabajo_posterior }}
+                                                </span></li>
+                                            <li><small class="text-muted">Finalizado: </small><span>{{ dato.0.finalizado }}</span>
+                                            </li>
+                                            <li><small class="text-muted">Tipo de Proyecto: </small>
+                                                <span>{{ dato.0.tipo_proyecto }}</span></li>
+                                        </ul>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if row and forloop.last%}
+                    <div class="row no-gutters">
+                    {% endif %}
+                    
+
+                    {% if not row or forloop.last %}
+
+                    <!-- Se repiten, muevele aqui :V  -->
+                    <div class="col-md-6">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="{{ dato.1.url_logo }}" class="card-img p-t-30" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ dato.0.nombre }}</h5>
+                                        <ul class="simple">
+                                            <li><small class="text-muted">
+                                                Alumno: </small><span>{{ dato.0.alumno.nombre }}</span>
+                                            </li>
+                                            <li><small class="text-muted">
+                                                Carrera: </small><span>{{ dato.0.alumno.carrera }}</span>
+                                            </li>
+                                            <li><small class="text-muted">
+                                                Semestre: </small><span>{{ dato.0.alumno.semestre }}</span>
+                                            </li>
+                                            <li><small class="text-muted">
+                                                    Empresa: </small><span>{{ dato.0.empresa_rfc }}</span>
+                                            </li>
+                                            <li><small class="text-muted">Asesor: </small> <span>{{ dato.0.asesor_interno }}</span>
+                                            </li>
+                                            <li><small class="text-muted">Asesor Externo: </small>
+                                                <span>{{ dato.0.asesor_externo }}</span>
+                                            </li>
+                                            <li><small class="text-muted">Area: </small> <span>{{ dato.0.area }}</span></li>
+                                            <li><small class="text-muted">Trabajo Posterior: </small> <span>
+                                                    {{ dato.0.trabajo_posterior }}
+                                                </span></li>
+                                            <li><small class="text-muted">Finalizado: </small><span>{{ dato.0.finalizado }}</span>
+                                            </li>
+                                            <li><small class="text-muted">Tipo de Proyecto: </small>
+                                                <span>{{ dato.0.tipo_proyecto }}</span></li>
+                                        </ul>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div> <!-- Acaba row -->                        
+            {% endif %}
+        {% endfor %}
+    </div> <!-- acaba container-->
+
+
+    {% endblock %}

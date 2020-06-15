@@ -1,0 +1,368 @@
+body{
+	font-family: 'Titillium Web', sans-serif;
+	background: white;
+}
+
+
+
+h1 { font-size: 66px; font-weight: 700; line-height: 80px; }
+h2{font-size: 48px; margin-bottom: 30px;}
+h5{ margin-bottom: 0px;}
+
+/*Fotos Header */
+.gobmexico{
+	width: 20%;
+}
+
+.itmlogo{
+	width: 7%;
+}
+
+/*Termina fotos header*/
+
+/* NavBar  */
+.navlogoitm { /*logo de izquierda*/
+	width: 17%;
+}
+
+.navbar{
+	background-color: #2875EB;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .05);	
+	height: 45px;
+}
+
+.nav-link{color: #000000;}
+
+.nav-link:hover{ color: #000000;}
+
+.navbar-toggler{font-size: 40px;}
+.navbar-toggler:focus{outline: none;}
+
+/* termina navbar css*/
+
+
+/* Carousel banner */
+.bannerdata{
+	padding: 5px 0px;
+}
+
+/* termina carousel banner*/
+
+/* informacion */
+.h4headerrequisitos{
+	padding-top: 20px;
+}
+
+#info{
+	padding-top: 8px;
+	padding-bottom: 10px;
+}
+
+#info-requisitos{
+	padding-top: 8px;
+	padding-bottom: 20px;
+}
+
+.h3header{
+	padding: 0px 0px;
+	font-size: 35px;
+}
+
+.h4header{
+	padding-top: 90px;
+	font-size: 30px;
+}
+
+.pinfo{
+	color: black;
+	padding: 20px 80px;
+	font-size: 20px;
+}
+
+.info-details {
+	position: absolute;
+	bottom: 25px;
+	left: 25px;
+	z-index: 9000 ;
+	color: white;
+}
+
+
+
+.info-container{
+	position: relative;
+	overflow: hidden;
+	margin: 10px 0;
+	border-radius: 2px;
+}
+
+.info-container img{
+	-moz-transition: all 0.8s;
+	-webkit-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+.info-container:hover img{
+	-moz-transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
+
+}
+
+.info-details {
+	position: absolute;
+	bottom: 25px;
+	left: 25px;
+	z-index: 9000 ;
+}
+
+.info-details h2{
+	margin-bottom: 0px;
+}
+
+.info-details  p{
+	color: white;
+}
+
+.listarequisitos{
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.imgrequisitos{
+	padding-left: 100px;
+}
+
+/* termina informacion*/
+
+/* Contact */
+
+#contact{
+	padding-top: 15px;
+	padding-bottom: 20px;
+
+}
+
+.pcontact{
+	color: black;
+	padding: 20px 80px;
+	font-size: 20px;
+}
+
+
+/* termina contact */
+
+/* footer */
+
+.bg-blue{ background-color: #2875EB !important; }
+
+
+footer{
+	padding: 80px 0;
+	text-align: center;
+	color: black;
+}
+
+footer a{
+	color: black;
+	font-size: 18px;	
+}
+
+footer a:hover{
+	color: black;
+}
+
+footer .list-inline .list-inline-item {
+	padding: 10px 15px;
+}
+
+/* termina footer */
+
+p{
+	font-size: 18px;
+	color: #999999;
+	line-height: 1.8;
+	margin-bottom: 0;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a ion-icon{
+	font-size: 22px;
+	color: #ffffff;
+}
+
+section{
+	padding: 120px 0;
+}
+
+.bg-light-grey{ background-color: #f5f5f5;}
+
+
+.divider { border-bottom: 2px solid #f5f5f5; }
+
+.margintop-xs { margin-top: 15px !important; }
+.margintop-sm { margin-top: 30px !important; }
+.margintop-lg { margin-top: 60px !important;}
+
+.btn{
+	font-size: 14px;
+	padding: 15px 26px;
+	min-width: 160px;
+	border-radius: 2px;
+	display: inline-block;
+}
+
+
+
+.btn-light{
+	background-color: #ffffff;
+	color: #1a1a1a;
+	border: 2px solid #ffffff;
+}
+
+.btn-dark{
+	background-color: #1a1a1a;
+	color: #ffffff;
+	border: 2px solid #1a1a1a;
+
+}
+
+.btn ion-icon{
+	font-size: 14px;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+.btn-transparent{
+	background-color: transparent;
+	color: #ffffff;
+	border: 2px solid #ffffff;
+}
+
+.btn-transparent:hover{
+	color: #ffffff;
+}
+
+.full-width{
+	width: 100%;
+}
+
+
+.colorDark { color: #1a1a1a !important; }
+
+.content-center{
+	max-width: 800px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+}
+
+
+.form-control {
+    font-size: 14px;
+    border: 1px solid #cacaca;
+    padding: 15px;
+    border-radius: 2px;
+}
+
+.form-control:focus {
+    border: 1px solid #1a1a1a;
+    outline: none;
+    box-shadow: none;
+}
+
+.text-dark { color: #1a1a1a;}
+
+
+/* Alumnos.html */
+
+#infoalumnos{
+	padding-top: 8px;
+	padding-bottom: 10px;
+	
+}
+
+
+.panel {
+    border-radius: 2px;
+    border: 0;
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,.12), 0 1px 6px 0 rgba(0,0,0,.12);
+}
+.panel-title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 16px;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+}
+
+.infopadding{
+	/*padding-left: 50px;*/
+	justify-content: center;
+}
+
+.paddingalumnoproyecto{
+	padding-left: 50px;
+}
+
+
+.h4alumnoinfo{
+	padding-top: 0px;
+	padding-bottom: 5px;
+}
+
+.btnproyecto{
+	font-size: 14px;
+	padding: 15px 26px;
+	min-width: 300px;
+	border-radius: 2px;
+	display: inline-block;
+}
+
+/* acaba alumnos.html */
+
+/* Empresas */
+.card-img-top{
+	size: 50%;
+}
+
+/* termina empresas */
+
+
+/*  Docentes con proyectos */
+.docentepadding{
+	/*padding-left: 50px;*/
+	justify-content: center;
+}
+
+/* termina docentes  con proyectos */
+
+.margin-left{
+	margin-left: 80px !important;
+}
+
+@media (max-width: 575.98px) { 
+	h1{font-size: 40px; line-height: normal;}
+	.plans{ min-width: unset; padding: 40px;}
+	.portfolio-details h2{ font-size: 32px ;}
+	.footer-menu{
+		display: block !important;
+		padding: 20px 0 !important;
+		font-size: 20px;
+	}
+ }
+
+@media (max-width: 769.98px) {
+	.portfolio-details h2{ font-size: 30px;}
+	.plans{ min-width: unset; padding: 40px 20px; }
+ }
+
+@media (max-width: 991.98px) { ... }
+
+@media (max-width: 1199.98px) { ... }

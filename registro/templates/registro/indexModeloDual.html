@@ -1,0 +1,242 @@
+{% extends 'registro/base.html' %}
+{% load static %}
+{% block content %}
+
+	
+	{% if messages %}
+		<script>
+			{% for message in messages %}
+				alert("{{ message }}");
+			{% endfor %}
+		</script>
+	{% endif %}
+	
+
+<!-- Banner Carrousel -->
+
+<section id="banner" class="divider bannerdata">
+	<div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
+		<ol class="carousel-indicators">
+		{% for item in banner_items %}
+			{% if forloop.first %}
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			{% else %}
+				<li data-target="#carouselExampleIndicators" data-slide-to="{{forloop.counter0}}"></li>
+			{% endif %}
+		{% empty %}
+			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+		{% endfor %}
+		</ol>
+
+
+		<div class="carousel-inner">
+			{% for item in banner_items %}
+				{% if forloop.first  %}
+					<div class="carousel-item active">
+				{% else %}
+					<div class="carousel-item">
+				{% endif %}
+				{% if item.redirect_url %}
+					<a href="{{ item.redirect_url }}"><img class="d-block w-100" src="{% static item.image.url %}" ></a>
+				{% elif item.redirect_page_section %}
+					{% if item.redirect_page_section == "Proyectos" %}
+						<a href="{% url 'proyectos' %}"><img class="d-block w-100" src="{% static item.image.url %}"></a>
+					{% elif item.redirect_page_section == "Album" %}
+						<a href="{% url 'album_fotos' %}"><img class="d-block w-100" src="{% static item.image.url %}"></a>
+					{% elif item.redirect_page_section == "Empresas" %}
+						<a href="{% url 'empresas' %}"><img class="d-block w-100" src="{% static item.image.url %}" ></a>
+					{% endif %}
+				{% else %}
+					<a><img class="d-block w-100" src="{% static item.image.url %}" ></a>
+				{% endif %}
+					</div>
+			{% empty %}
+				<div class="carousel-item active">
+					<img class="d-block w-100" src="{% static 'images/banner.png' %}" alt="First slide">
+				</div>
+			{% endfor %}
+		</div>
+
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</section>
+<!-- Termina carousel-->
+
+<!-- Info -->
+<section id="info" class="divider">
+	<div class="container-fluid">
+		<div class="content-center ">
+			<h3 class="h3header">Información</h3>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="info-container">
+					<div class="content-center">
+						<h4 class="h4header font-weight-bold">¿Qué es el modelo de educación dual?</h4>
+						<p class="pinfo">El modelo de formación dual, es un modelo educativo diseñado para
+							estudiantes, con un
+							proceso de educación que combina los estudios con una dase teórica (aula) y una fase
+							práctica (empresa).</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="info-container">
+					<div class="info-details">
+						<h3>Modelo Dual</h3>
+						<p>Instituto Tecnológico de Mexicali</p>
+					</div>
+					<img src="{% static 'images/ing.jpg' %}" class="img-fluid" alt="info 1">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section> <!-- termina info -->
+
+{% if datos.count > 1%}
+<!-- empresas -->
+<section id="info-requisitos" class="divider">
+	<div class="container p-b-15 p-t-15">
+		<div class="content-center ">
+			<h3>Empresas</h3>
+		</div>
+		<div class="row no-gutters">
+			<div class="col-md-6">
+				<div class="card mb-3" style="max-width: 540px;">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img src="{{ datos.0.url_logo }}" class="card-img p-t-8" alt="...">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title">{{ datos.0.nombre }}</h5>
+								<p class="card-text"><small class="text-muted">Responsable:
+										{{ datos.0.responsable }}</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card mb-3" style="max-width: 540px;">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img src="{{ datos.1.url_logo }}" class="card-img p-t-9 p-b-11" alt="...">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title">{{ datos.1.nombre }}</h5>
+								<p class="card-text"><small class="text-muted">Responsable:
+										{{ datos.1.responsable }}</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div> <!-- Acaba row -->
+		
+	</div> <!-- acaba container-->
+
+	<div class="container p-b-10 p-t-15">
+
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4"><a href="{% url 'empresas' %}" class="btn btn-dark col-md-12 p-t-10 p-b-10">¿Quieres ver todas las empresas afiliadas? </a></div>
+		<div class="col-md-4"></div>
+	  </div>
+	</div>
+
+
+</section>
+<!-- termina empresas -->
+{% endif %}
+
+<!-- Requisitos -->
+<section id="info-requisitos" class="divider">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="info-container-requisitos text-center">
+					<img src="{% static 'images/requisitos.png' %}" class="img-fluid" alt="requisitos 1"
+						style="width: 50%;">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="content-center">
+					<h4 class="h4headerrequisitos font-weight-bold">Requisitos</h4>
+				</div>
+				<div class="listarequisitos p-l-200 ">
+					<li>- Alumno regular</li>
+					<li>- Promedio mínimo de 85</li>
+					<li>- Servicio social liberado</li>
+					<li>- Conocimiento Básico del idioma inglés </li>
+					<li>- Capacidad de solucionar problemas </li>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- termina requisitos -->
+
+
+<!-- contacto -->
+	<section id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 margintop-sm p-t-90 ">
+					<h3>¿Estas listo para unirte <b>al modelo dual?</b></h3>
+					<h6 class="p-l-60">Ingresa tus datos en estos campos para registrarte.</h6>
+				</div>
+				
+
+
+				<div class="col-md-6 margintop-sm">
+
+					<form method="post" action="{% url 'principal' %}">
+					{% csrf_token %}
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="text" name="username" class="form-control" id="" placeholder="Nombre" required>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="text" name="matricula" class="form-control" id="" placeholder="Numero de Control" required pattern=".{8,9}" title="8 a 9 caracteres solamente" required>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="text" name="carrera" class="form-control" id="" placeholder="Carrera" required>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="number" min="1" max="12" name="semestre" class="form-control" id="" placeholder="Semestre" required>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="email" name="mail" class="form-control" id="" placeholder="Email" required>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<button type="submit" value="send" style="color: white;" class="btn btn-dark full-width">Enviar</button>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

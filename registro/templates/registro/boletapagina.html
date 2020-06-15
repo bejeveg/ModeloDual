@@ -1,0 +1,77 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+{% if messages %}
+<script>
+    {% for message in messages %}
+    alert("{{ message }}");
+    {% endfor %}
+</script>
+{% endif %}
+
+<section id="infoalumnos" class="divider">
+    <div class="container-login100">
+        <div class="wrap-login100 ">
+            <span class="login100-form-title p-b-30">
+                Boleta de Calificaciones:
+                {% if tipo %}
+                Docente
+                {% else %}
+                Asesor externo
+                {% endif %}
+            </span>
+            {% if tipo %}
+            <form method="post" action="{% url 'docente' %}">
+                {% else %}
+                <form method="post" action="{% url 'asesor_externo' %}">
+                    {% endif %}
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Calificación 1er Periodo</label>
+                        {% if tipo %}
+                        <input type="number" name="docente_p1" class="form-control" value='{{datos.docente_p1}}' min="0"
+                            max="100">
+                        {% else %}
+                        <input type="number" name="asesor_p1" class="form-control" value='{{datos.asesor_p1}}' min="0"
+                            max="100">
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Calificación 2do Periodo</label>
+                        {% if tipo %}
+                        <input type="number" name="docente_p2" class="form-control" value='{{datos.docente_p2}}' min="0"
+                            max="100">
+                        {% else %}
+                        <input type="number" name="asesor_p2" class="form-control" value='{{datos.asesor_p2}}' min="0"
+                            max="100">
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Calificación 3er Periodo</label>
+                        {% if tipo %}
+                        <input type="number" name="docente_p3" class="form-control" value='{{datos.docente_p3}}' min="0"
+                            max="100">
+                        {% else %}
+                        <input type="number" name="asesor_p3" class="form-control" value='{{datos.asesort_p3}}' min="0"
+                            max="100">
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Comentarios</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="comentarios"
+                            rows="3">{{ datos.comentarios }}</textarea>
+                    </div>
+                    <input type="hidden" name="id_boleta" value="{{ datos.id}}">
+                    <div class="p-l-115">
+                        <input type="submit" class="btn btn-dark "></input>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted p-t-5">Para realizar cambios adicionales contacta
+                        con
+                        los administradores</small>
+                </form>
+        </div>
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+
+
+{% endblock %}

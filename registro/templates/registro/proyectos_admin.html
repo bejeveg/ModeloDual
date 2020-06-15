@@ -1,0 +1,87 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+
+
+<!-- Info -->
+<section id="infoalumnos" class="divider">
+    <div class="container-fluid">
+        <div class="content-center ">
+            <h3>Admin - Proyectos</h3>
+        </div>
+        <div class="content-center">
+            <div class="row">
+                <a href="{% url 'administrator' value=1 %}" class="btn  btn-outline-dark col-md-3 p-t-10 p-b-10">Solicitudes</a>
+                <a href="{% url 'administrator' value=2 %}" class="btn  btn-dark col-md-3 p-t-10 p-b-10">Proyectos</a>
+                <a href="{% url 'reportes_administrador' %}" class="btn  btn-outline-dark col-md-3 p-t-10 p-b-10">Generar Reportes</a>
+                <a href="/admin" class="btn  btn-outline-dark col-md-3 p-t-10 p-b-10">Nuevo proyecto</a>
+            </div>
+        </div>
+
+        <div class="container p-b-15 ">
+            <div class="row no-gutters">
+
+                {% for proyecto in proyectos %}
+                <div class="col-md-6">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ proyecto.nombre }}</h5>
+                                    <ul class="simple">
+                                        <li><small class="text-muted">
+                                                Alumno: </small><span>{{ proyecto.alumno.nombre }}</span>
+                                        </li>
+                                        <li><small class="text-muted">
+                                                Matrícula: </small><span>{{ proyecto.alumno.no_control }}</span>
+                                        </li>
+                                        <li><small class="text-muted">
+                                                Carrera: </small><span>{{ proyecto.alumno.carrera }}</span>
+                                        </li>
+                                        <li><small class="text-muted">
+                                                Semestre: </small><span>{{ proyecto.alumno.semestre }}</span>
+                                        </li>
+                                        <li><small class="text-muted">
+                                                Empresa: </small><span>{{ proyecto.empresa_rfc }}</span>
+                                        </li>
+                                        <li><small class="text-muted">Asesor: </small>
+                                            <span>{{ proyecto.asesor_interno }}</span>
+                                        </li>
+                                        <li><small class="text-muted">Asesor Externo: </small>
+                                            <span>{{ proyecto.asesor_externo }}</span>
+                                        </li>
+                                        <li><small class="text-muted">Calificación Final: </small> <span>
+                                                {{ proyecto.cal_final }}
+                                            </span></li>
+                                        <li><small class="text-muted">Area: </small> <span>{{ proyecto.area }}</span>
+                                        </li>
+                                        <li><small class="text-muted">Trabajo Posterior: </small> <span>
+                                                {{ proyecto.trabajo_posterior }}
+                                            </span></li>
+                                        <li><small
+                                                class="text-muted">Finalizado: </small><span>{{ proyecto.finalizado }}</span>
+                                        </li>
+                                        <li><small class="text-muted">Tipo de Proyecto: </small>
+                                            <span>{{ proyecto.tipo_proyecto }}</span></li>
+
+                                        <li><small class="text-muted">Responsable: </small>
+                                            <span>{{ dato.responsable }}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+
+            </div> <!-- Acaba row de proyectos -->
+        </div> <!-- acaba container de proyectos-->
+
+
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+{% endblock %}
+
+

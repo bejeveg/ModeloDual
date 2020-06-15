@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modelo Dual ITM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css_bootstrap/bootstrap.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.ico' %}" />
+
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="{% static 'css/modelodualstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loginutil.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loginmain.css' %}">
+
+</head>
+
+<body>
+    <!-- *********** Empieza el Contenido *********** -->
+
+    <!-- Imagenes top -->
+    <header class="container-fluid m-auto">
+        <div class="row">
+            <div class="col-md-12  text-center">
+                <a href="#" target="" style="">
+                    <img src="{% static 'images/gobmexico.png' %}" alt="" class="gobmexico">
+                </a>
+                <a href="#" target="" style="">
+                    <img src="{% static 'images/educacion.png' %}" alt="" class="">
+                </a>
+                <a href="#" style="">
+                    <img src="{% static 'images/tecnm.png' %}" alt="" class="">
+                </a>
+                <a href="#" target="" style="">
+                    <img src="{% static 'images/itm.png' %}" alt="" class="itmlogo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'principal' %}"><img src="{% static 'images/itm.png' %}"
+                    class="navlogoitm" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <ion-icon name="menu"></ion-icon>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'alumno' %}" id="home"><b>Alumnos</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'docente' %}" id="portfolio"><b>Docentes</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'empresas' %}" id="aboutus"><b>Empresas</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'asesor_externo' %}" id="asesoresExt"><b>Asesores Ext.</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'proyectos' %}" id="proyectos"><b>Proyectos</b></a>
+                    </li>
+                    <!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" id="testimonial"><b>Contacto</b></a>
+                    </li>
+                    -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}" id="salir"><b>Salir</b></a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div> <!-- termina container -->
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+
+
+    <!-- Footer -->
+    <footer class="bg-blue">
+        <div class="container">
+            <ul class="list-inline">
+                <li class="list-inline-item footer-menu"><a href="{% url 'alumno' %}"><b>Alumnos</b></a></li>
+                <li class="list-inline-item footer-menu"><a href="{% url 'docente' %}"><b>Docentes</b></a></li>
+                <li class="list-inline-item footer-menu"><a href="{% url 'empresas' %}"><b>Empresas</b></a></li>
+                <li class="list-inline-item footer-menu"><a href="{% url 'asesor_externo' %}"><b>Asesores Ext.</b></a>
+                </li>
+                <li class="list-inline-item footer-menu"><a href="{% url 'proyectos' %}"><b>Proyectos</b></a></li>
+                <li class="list-inline-item footer-menu"><a href="#contact"><b>Contacto</b></a></li>
+                <li class="list-inline-item footer-menu"><a href="{% url 'administrator' %}"><b>Admin</b></a></li>
+            </ul>
+            <ul class="list-inline">
+
+                <li class="list-inline-item"><a href="">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a></li>
+
+
+                <li class="list-inline-item"><a href="">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a></li>
+            </ul>
+            <small>© 2020 Copyright: Instituto Tecnológico de Mexicali. Algunos derechos reservados</small>
+        </div>
+    </footer>
+
+
+
+    <!-- *********** Termina el Contenido *********** -->
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
+</body>
+
+</html>

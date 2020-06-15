@@ -1,0 +1,198 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+{% if messages %}
+<script>
+    {% for message in messages %}
+    alert("{{ message }}");
+    {% endfor %}
+</script>
+{% endif %}
+
+
+{% if not proyectos %}
+<!-- docentes sin proyecto -->
+<section id="infoalumnos" class="divider">
+    <div class="container-fluid">
+        <div class="content-center ">
+            <h3>Datos Generales</h3>
+        </div>
+        <div class="row infopadding">
+            <div class="col-md-4 " id="sticky-sidebar">
+                <div class="col-md-12 sticky-top">
+                    <div class="panel panel-default flex-column position-sticky pb-4">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Información de Docente</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="simple">
+                                <li><small class="text-muted">Nº de empleado:</small> <span>{{ datos.no_empleado }}
+                                    </span>
+                                </li>
+                                <li><small class="text-muted">Nombre:</small> <span>{{ datos.nombre }}</span></li>
+                                <li><small class="text-muted">Departamento:</small> <span> {{ datos.departamento }}
+                                    </span>
+                                </li>
+                                <li><small class="text-muted">Telefono:</small> <span> {{ datos.telefono }} </span></li>
+                                <li><small class="text-muted">Correo electrónico:</small><span>{{ datos.correo }}</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <a href="{% url 'editar_asesor_interno' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                        Editar información</a>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+{% endif %}
+
+
+
+{% if proyectos %}
+
+<!-- docentes con proyectos -->
+<section id="infoalumnos">
+    <div class="container-fluid">
+        <div class="content-center ">
+            <h3>Datos Generales</h3>
+        </div>
+
+        <!--  con el for aqui sale bien el formato, pero se repite el panel del docente-->
+        <div class="row infopadding p-b-10">
+            <div class="col-md-4">
+                <div class="col-md-12 ">
+                    <div class="panel panel-default pb-4">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Información de Docente</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="simple">
+                                <li><small class="text-muted">Nº de empleado:</small> <span>{{ datos.no_empleado }}
+                                    </span>
+                                </li>
+                                <li><small class="text-muted">Nombre:</small> <span>{{ datos.nombre }}</span></li>
+                                <li><small class="text-muted">Departamento:</small> <span> {{ datos.departamento }}
+                                    </span>
+                                </li>
+                                <li><small class="text-muted">Telefono:</small> <span> {{ datos.telefono }} </span></li>
+                                <li><small class="text-muted">Correo electrónico:</small><span>{{ datos.correo }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="{% url 'editar_asesor_interno' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Editar información</a>
+                </div>
+            </div>
+        </div>
+        <div class="content-center ">
+            <div class="input-group col-md-12">
+                <a href="#" class="col-md-4" role="button"></a>
+                <a href="{% url 'reportes_asesores' %}" class="btn btn-dark col-md-4" role="button"
+                    aria-pressed="true">Generar Reportes</a>
+                <a href="#" class="col-md-4" role="button"></a>
+
+            </div>
+        </div>
+
+        <!-- Con el for aqui el primer proyecto sale bien, y los demás abajo expandidos-->
+        {% for proyecto in proyectos %}
+
+        <div class="row infopadding p-b-10">
+            <div class="col-md-8 p-b-10">
+                <div class="col-md-12 ">
+                    <div class="panel panel-default pb-4">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Información de Proyecto: <b>{{ proyecto.nombre }}</b></h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="simple">
+                                <li><small class="text-muted">
+                                        Alumno: </small><span>{{ proyecto.alumno.nombre }}</span>
+                                </li>
+                                <li><small class="text-muted">
+                                        Carrera: </small><span>{{ proyecto.alumno.carrera }}</span>
+                                </li>
+                                <li><small class="text-muted">
+                                        Semestre: </small><span>{{ proyecto.alumno.semestre }}</span>
+                                </li>
+                                <li><small class="text-muted">
+                                        Empresa: </small><span>{{ proyecto.empresa_rfc }}</span>
+                                </li>
+                                <li><small class="text-muted">Asesor:</small> <span>{{ proyecto.asesor_interno }}</span>
+                                </li>
+                                <li><small class="text-muted">Asesor Externo:</small>
+                                    <span>{{ proyecto.asesor_externo }}</span>
+                                </li>
+                                <li><small class="text-muted">Calificación Final:</small> <span>
+                                        {{ proyecto.cal_final }}
+                                    </span></li>
+                                <li><small class="text-muted">Area:</small> <span>{{ proyecto.area }}</span></li>
+                                <li><small class="text-muted">Trabajo Posterior:</small> <span>
+                                        {{ proyecto.trabajo_posterior }}
+                                    </span></li>
+                                <li><small class="text-muted">Finalizado: </small><span>{{ proyecto.finalizado }}</span>
+                                </li>
+                                <li><small class="text-muted">Tipo de Proyecto:</small>
+                                    <span>{{ proyecto.tipo_proyecto }}</span></li>
+                            </ul>
+                            <div class="content-fluid p-t-10 p-b-10 p-l-35">
+                                <div class="input-group  col-md-12 p-r-50 p-l-50">
+
+                                    <form action="{% url 'boleta' %}" method="post" class="">
+                                        {% csrf_token %}
+                                        <input type="submit" value="Boleta" class="btn btn-dark col-md-2" role="button"
+                                            aria-pressed="true">
+                                        <input type="hidden" name="id_proyecto" value="{{ proyecto.id }}">
+                                    </form>
+
+                                    <a href="#" class="btn btn-light col-md-2 disabled " role="button"></a>
+
+                                    <!-- Boton hiperlink que lleva a url de proyectos puestos por alumno -->
+                                    {% if proyecto.url_folder %}
+                                     <a href="{{proyecto.url_folder}}" class="btn btn-dark col-md-2 " target="_blank"
+                                        role="button">Carpeta de reportes</a>
+                                    {% else %}
+                                    <a  href="#"  class="btn btn-dark col-md-2 "
+                                        role="button">Carpeta de reportes.</a>
+                                    {% endif %}
+
+
+                                    <a href="#" class="btn btn-light col-md-2 disabled" role="button"></a>
+
+                                    <form action="{% url 'reporte_personal' %}" method="post" class="">
+                                        {% csrf_token %}
+                                        <input type="submit" class="btn btn-dark col-md-2" value='Generar Reporte'>
+                                        <input type="hidden" name="id_proyecto" value="{{ proyecto.id }}">
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        {% endfor %}
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+
+
+{% endif %}
+{% endblock %}

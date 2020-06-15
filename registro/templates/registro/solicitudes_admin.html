@@ -1,0 +1,66 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+
+<!-- admin solicitudes -->
+<section id="infoalumnos" class="divider">
+    <div class="container-fluid">
+        <div class="content-center ">
+            <h3>Admin - Solicitudes</h3>
+        </div>
+        <div class="content-center">
+            <div class="row">
+                <a href="{% url 'administrator' value=1 %}" class="btn  btn-dark col-md-3 p-t-10 p-b-10">Solicitudes</a>
+                <a href="{% url 'administrator' value=2 %}" class="btn  btn-outline-dark col-md-3 p-t-10 p-b-10">Proyectos</a>
+                <a href="{% url 'reportes_administrador' %}" class="btn  btn-outline-dark col-md-3 p-t-10 p-b-10">Generar Reportes</a>
+                <a href="/admin" class="btn  btn-outline-dark col-md-3 p-t-10 p-b-10">Nuevo proyecto</a>
+
+                
+            </div>
+        </div>
+
+        {% for dato in datos %}
+        <div class="col-md-12 paddingalumnoproyecto p-b-20">
+            <div class="row infopadding">
+                <div class="col-md-6 ">
+                    <div class="panel panel-default ">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Información de Alumno </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="simple">
+                                <li><small class="text-muted">Nombre:</small> <span>{{ dato.s_nombre }}</span></li>
+                                <li><small class="text-muted">Nº de control:</small>
+                                    <span>{{ dato.s_no_control }}</span></li>
+                                <li><small class="text-muted">Carrera:</small> <span>{{ dato.s_carrera }}</span></li>
+                                <li><small class="text-muted">Semestre:</small> <span>{{ dato.s_semestre }}</span></li>
+                                <li><small class="text-muted">Correo
+                                        electrónico:</small><span>{{ dato.s_correo }}</span></li>
+                            </ul>
+                            <div class="content-fluid p-t-10 p-b-10">
+                                <form action="{% url 'administrator' %}" method="post" class="">
+                                    {% csrf_token %}
+                                    <div class="input-group  col-md-12">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;
+                                        <input type="submit" name="acept" value="Aceptar"
+                                            class="btn btn-outline-success col-md-4 ">&nbsp;&nbsp;
+
+                                        <input type="submit" name="delete" value="Rechazar"
+                                            class="btn btn-outline-danger col-md-4 ">
+                                    </div>
+                                    <input type="hidden" name="no_control" value="{{dato.s_no_control}}" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+{% endblock %}

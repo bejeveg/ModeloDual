@@ -1,0 +1,49 @@
+{% extends 'registro/base.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+    image {
+        width: 100%;
+        height: 100%;
+    }
+
+</style>
+
+
+<div class="content-center ">
+    <h3 class="h3header p-t-10">Álbum de fotos Modelo Dual</h3>
+</div>
+
+<div class="container page-top">
+    <div class="row">
+        {% for i in images %}
+        {% if i.image %}
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <img data-toggle="modal" data-target="#myModal{{ forloop.counter }}" src="{% static i.image.url %}" class="zoom img-fluid " alt="">
+                <div id="myModal{{ forloop.counter}}" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                            <img  src="{% static i.image.url %}" class="img-responsive">
+                    </div>
+                  </div>
+                </div>
+            </div>
+        {% elif i.alternative_url %}
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <img data-toggle="modal" data-target="#myModal{{ forloop.counter }}" src="{{ i.alternative_url }}" class="zoom img-fluid " alt="">
+                <div id="myModal{{ forloop.counter}}" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                         <img src="{{ i.alternative_url }}" class="img-responsive">
+                    </div>
+                  </div>
+                </div>
+            </div>
+        {% endif %} 
+        {% endfor %}
+    </div>
+    <br><br>
+
+</div>
+{% endblock %}

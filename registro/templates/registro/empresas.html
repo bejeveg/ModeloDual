@@ -1,0 +1,61 @@
+{% extends 'registro/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- empresas -->
+
+    <div class="container p-b-15 p-t-15">
+        <div class="content-center ">
+            <h3>Empresas</h3>
+        </div>
+        {% for dato in datos %}
+            {% cycle True False as row silent %}
+                {% if row and not forloop.last%}
+                 <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="{{ dato.url_logo }}" class="card-img p-t-30" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ dato.nombre }}</h5>
+                                        <p class="card-text">Denominación social: {{ dato.den_social }}</p>
+                                        <p class="card-text"><small class="text-muted">Responsable: {{ dato.responsable }}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                   
+                {% endif %}
+
+                {% if row and forloop.last%}
+                <div class="row no-gutters">
+                {% endif %}
+
+                {% if not row or forloop.last %}
+                <div class="col-md-6">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="{{ dato.url_logo }}" class="card-img p-t-30" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ dato.nombre }}</h5>
+                                        <p class="card-text">Denominación social: {{ dato.den_social }}</p>
+                                        <p class="card-text"><small class="text-muted">Responsable: {{ dato.responsable }}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Acaba row -->                        
+            {% endif %}
+        {% endfor %}
+    </div> <!-- acaba container-->
+
+
+    {% endblock %}

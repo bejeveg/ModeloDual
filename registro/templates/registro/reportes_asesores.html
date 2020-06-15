@@ -1,0 +1,109 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+
+<style>  
+.form-control-opc {
+    font-size: 15px;
+    border: 1px solid #cacaca;
+    border-radius: 2px;
+    color: #495057;
+    padding: 5px 9px 5px 14px ;
+}
+    
+.form-control-opc:focus {
+    border: 1px solid #1a1a1a;
+     outline: none;
+     box-shadow: none;
+}
+</style>
+
+{% if messages %}
+<script>
+    {% for message in messages %}
+    alert("{{ message }}");
+    {% endfor %}
+</script>
+{% endif %}
+<!-- Info -->
+<script type="text/javascript">
+    window.onload = disable_date(); // to disable select on load if needed
+    function disable_date()
+    {
+      var isChecked = document.getElementById("all_dates").checked;
+      document.getElementById("start_date").disabled = isChecked;
+      document.getElementById("end_date").disabled = isChecked;
+    }
+</script>
+
+<section id="infoalumnos">
+    <div class="container-fluid">
+
+        <span class="login100-form-title p-b-30">
+            Generar Reporte:
+        </span>
+
+        <div class="row infopadding p-b-10">
+            <div class="col-md-4 p-b-10">
+                <div class="col-md-12 ">
+
+                    <form method="post" action="{% url 'reportes_asesores' %}" class="content-fluid">
+                        {% csrf_token %}
+                        <div class="form-group ">
+                            <label for="exampleFormControlSelect1" class="p-b-5">Tipo</label>
+                            <select class="form-control-opc col-md-12 p-t-5 p-b-5" name="tipo" id="exampleFormControlSelect1">
+                                <option value="" selected="selected">Seleccione una opción</option>
+                                <option value="todos">Todos</option>
+                                <option value="sexo">Sexo</option>
+                                <option value="semestre">Semestre</option>
+                                {% if type %}
+                                    <option value="empresa">Empresa</option>
+                                {% else %}
+                                    <option value="asesor_interno">Asesor Interno</option>  
+                                {% endif %}
+                            </select>
+                        </div>
+
+
+                        <div class="form-inline row p-b-20">
+                            <!-- fechas -->
+
+                            <label for="example-date-input" class="col-md-2 col-form-label">Date</label>
+                            <div class="col-md-12 ">
+                                <input class="form-control-opc " type="date" name="date_one" id="start_date">
+                            </div>
+
+                            <label for="example-date-input" class="col-md-2 col-form-label">Date</label>
+                            <div class="col-md-12">
+                                <input class="form-control-opc " type="date" name="date_two" id="end_date">
+                            </div>
+                        </div>
+
+
+                        <div class="form-check p-b-20">
+                            <!-- Check Box -->
+                            <label class="form-check-label">
+                                <input name="all_dates" id="all_dates" type="checkbox" class="form-check-input" onClick="disable_date()">
+                                Todos
+                            </label>
+                        </div>
+
+                        <div>
+                            <button class="col-md-4"></button>
+                            <button type="submit" class="btn btn-dark col-md-4">Descargar</button>
+                            <button class="col-md-4"></button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+
+
+
+
+{% endblock %}

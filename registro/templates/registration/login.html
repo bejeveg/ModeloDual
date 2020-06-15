@@ -1,0 +1,42 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+	
+		<div class="container-login100">
+			<div class="wrap-login100 ">
+				<span class="login100-form-title p-b-30">
+					Iniciar sesión: {{type}}
+				</span>
+				<form method="post" action="{% url 'login' %}" class="login100-form validate-form p-b-33 p-t-5">
+                {% csrf_token %}
+               
+					<div class="wrap-input100 validate-input" data-validate = "Enter username" > 
+                        
+                        <input class="input100"  type="text" name="username" placeholder="Matrícula o Número de Empleado"><i class="far fa-user"></i>
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="password" placeholder="Contraseña">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button type="submit" value="login" class="login100-form-btn">
+							Login
+						</button>
+                    </div>
+                    
+                    
+            <input type="hidden" name="next" value="{{ next }}" />
+           
+				</form>
+			</div>
+		</div>
+
+		{% if failed %}
+        <p>Su matrícula/número de empleado y/o contraseña ha sido ingresada incorrectamente.</p>
+        {% endif %}
+        
+
+	
+{% endblock %}

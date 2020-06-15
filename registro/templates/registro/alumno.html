@@ -1,0 +1,107 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+{% if messages %}
+<script>
+    {% for message in messages %}
+    alert("{{ message }}");
+    {% endfor %}
+</script>
+{% endif %}
+
+<!-- Info -->
+<section id="infoalumnos" class="divider">
+    <div class="container-fluid">
+        <div class="content-center ">
+            <h3>Datos Generales</h3>
+        </div>
+        {% if proyecto %}
+        <div class="row ">
+            <div class="col-md-4 paddingalumnoproyecto">
+                {% else %}
+                <div class="row infopadding">
+                    <div class="col-md-4 ">
+                        {% endif %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Información de Alumno </h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="simple">
+                                    <li><small class="text-muted">Nº de control:</small> <span>{{ datos.no_control }}
+                                        </span></li>
+                                    <li><small class="text-muted">Nombre:</small> <span>{{ datos.nombre }}</span></li>
+                                    <li><small class="text-muted">Carrera:</small> <span>{{ datos.carrera }}</span></li>
+                                    <li><small class="text-muted">Semestre:</small> <span>{{ datos.semestre }}</span></li>
+                                    <li><small class="text-muted">Edad:</small> <span> {{ datos.edad }} </span></li>
+                                    <li><small class="text-muted">Sexo:</small> <span> {{ datos.sexo }} </span></li>
+                                    <li><small class="text-muted">Domicilio:</small> <span>{{ datos.domicilio }}</span>
+                                    </li>
+                                    <li><small class="text-muted">Télefono:</small> <span> {{ datos.telefono }} </span>
+                                    </li>
+                                    <li><small class="text-muted">Correo electrónico:</small>
+                                        <span>{{ datos.correo }}</span></li>
+                                    <li><small class="text-muted">Red Social:</small> <span>
+                                            {{ datos.red_social }}</span></li>
+                                    <li><small class="text-muted">Red Social url:</small>
+                                        <span>{{ datos.red_social_url }}</span></li>
+                                    <li><small class="text-muted">Estado Actual:</small>
+                                        <span>{{ datos.estado_actual }}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="{% url 'editar_alumno' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Editar información</a>
+                    </div>
+                    {% if not proyecto %}
+                </div>
+                {% endif %}
+
+                {% if proyecto %}
+                <div class="col-md-8 pt-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Información de Proyecto: <b>{{ proyecto.nombre }}</b></h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="simple">
+                                <li><small class="text-muted">RFC
+                                        Empresa:</small><span>{{ proyecto.empresa_rfc }}</span></li>
+                                <li><small class="text-muted">Asesor:</small> <span>{{ proyecto.asesor_interno }}</span>
+                                </li>
+                                <li><small class="text-muted">Asesor Externo:</small>
+                                    <span>{{ proyecto.asesor_externo }}</span></li>
+                                <li><small class="text-muted">Calificación Final:</small> <span>
+                                        {{ proyecto.cal_final }} </span></li>
+                                <li><small class="text-muted">id Area:</small> <span>{{ proyecto.area }}</span></li>
+                                <li><small class="text-muted">Trabajo Posterior:</small> <span>
+                                        {{ proyecto.trabajo_posterior }} </span></li>
+                                <li><small class="text-muted">Finalizado:</small><span>{{ proyecto.finalizado }}</span>
+                                </li>
+                                <li><small class="text-muted">Tipo de Proyecto:</small>
+                                    <span>{{ proyecto.tipo_proyecto }}</span></li>
+                            </ul>
+
+                            <div class="content-fluid p-t-10 p-b-10 p-l-35">
+                                <div class="input-group  col-md-12 p-r-50 p-l-50">
+                                    <a href="#" class="btn btn-light col-md-4 disabled " role="button"></a>
+                                    <a href="{% url 'carpeta_reportes' %}" class="btn btn-dark col-md-4 "
+                                        role="button">Editar carpeta de reportes</a>
+                                    <a href="#" class="btn btn-light col-md-4 disabled" role="button"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+
+
+{% endblock %}

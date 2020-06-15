@@ -1,0 +1,75 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+    {% if messages %}
+        <script>
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        </script>
+    {% endif %}
+
+<style>  
+.form-control-opc {
+    font-size: 15px;
+    border: 1px solid #cacaca;
+    border-radius: 2px;
+    color: #495057;
+    padding: 5px 9px 5px 14px ;
+}
+    
+.form-control-opc:focus {
+    border: 1px solid #1a1a1a;
+     outline: none;
+     box-shadow: none;
+}
+</style>
+
+<section id="infoalumnos" class="divider">
+    <div class="container-login100">
+        <div class="wrap-login100 ">
+            <span class="login100-form-title p-b-30">
+                Editar Información: 
+            </span>
+            <form method="post" action="{% url 'editar_asesor_interno' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Departamento</label>
+                    <select class="form-control-opc col-md-12 p-t-5 p-b-5" name="depto" id="depto" class="form-control">
+                        {% for departamento in departamentos%}
+                        <option value="{{departamento.id}}" selected="selected" class="form-control">{{departamento.nombre}}</option>
+                        {% endfor %} 
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Teléfono</label>
+                    <input type="number" name='phone' class="form-control" value='{{datos.telefono}}'>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail" value='{{datos.correo}}'>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">¿Quieres cambiar tu contraseña? Digita primero tu contraseña actual aquí  abajo:</label>
+                    <input type="password" class="form-control" name="old_pass">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Escribe tu nueva contraseña:</label>
+                    <input type="text" class="form-control" name="new_pass">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Vuelve a escribir tu nueva contraseña:</label>
+                    <input type="password" class="form-control" name="re_new_pass">
+                </div> 
+                <div class="p-l-115">
+                    <input type="submit" class="btn btn-dark "></input>
+                </div>
+                <small id="emailHelp" class="form-text text-muted p-t-5">Para realizar cambios adicionales contacta con los administradores</small>
+            </form>
+        </div>
+    </div>
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+
+
+{% endblock %}

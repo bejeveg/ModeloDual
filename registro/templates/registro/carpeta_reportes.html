@@ -1,0 +1,36 @@
+{% extends 'registro/base.html' %}
+
+{% block content %}
+
+{% if messages %}
+        <script>
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        </script>
+    {% endif %}
+
+<section id="infoalumnos" class="divider">
+    <div class="container-login100 col-md-12">
+        <div class="wrap-login100 ">
+            <span class="login100-form-title p-b-30">
+                Carpeta de Reportes:
+            </span>
+            <form method="post" action="{% url 'alumno' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputPassword1">URL</label>
+                    <input type="url" name="url_folder" class="form-control" value='{{datos.url_folder}}'>
+                </div>
+                <small id="emailHelp" class="form-text text-muted p-t-5 p-b-15">Ingresa el link de la carpeta de
+                    reportes</small>
+                <div class="content-center">
+                    <input type="submit" class="btn btn-dark "></input>
+                </div>
+            </form>
+        </div>
+    </div> <!-- Acaba container -->
+</section> <!-- termina info -->
+
+
+{% endblock %}
